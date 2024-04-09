@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: ns.zxeconlineshop
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: 0M5GDV4_SAML_ASSERTION
+          url: https://my409950-api.s4hana.cloud.sap
+        app:
+          name: ZEXT_SCENARIO1B
+          description: Online Shop -B
+          package: ZEXT_SCENARIO1
+          transport: CDGK900050
+        exclude:
+          - /test/
